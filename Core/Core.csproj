@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.0.0.396" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.444934" />
+    <PackageReference Include="LiveXAML" Version="2.1.22" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">

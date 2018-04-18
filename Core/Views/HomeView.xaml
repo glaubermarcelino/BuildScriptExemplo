@@ -3,11 +3,46 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="Core.Views.HomeView"
-    Title="Home"
+    Title="{Binding Titulo}"
 >
     <ContentPage.Content>
-        <Label 
-            Text="Build scrips exemplo"
-        />
+        <ListView
+            ItemsSource="{Binding Produtos}"
+            HasUnevenRows="true"
+        >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="180" />
+                                </Grid.RowDefinitions>
+
+                                <Image 
+                                    Grid.Row="0"
+                                    Source="{Binding LinkFoto}"
+                                    Aspect="AspectFill"
+                                />
+
+                                <StackLayout
+                                    VerticalOptions="End"
+                                    BackgroundColor="Black"
+                                    Opacity="0.6"
+                                >
+                                    <Label 
+                                        Text="{Binding Nome}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Margin="10"
+                                    />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
