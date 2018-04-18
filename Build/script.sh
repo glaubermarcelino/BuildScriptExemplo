@@ -1,20 +1,8 @@
 #!/usr/bin/env bash
 
-# Funções para log
-inicio()
-{
-    echo "##[section]Starting: $1"
-}
-
-fim()
-{
-    echo "##[section]Finishing: $1"
-}
-
-
 
 # Verificando se SOLUTION_DIR foi informado
-inicio "Verificando SOLUTION_DIR"
+echo "##[section]Starting: Verificando SOLUTION_DIR"
 
 if [ -n "$1" ]
 then
@@ -24,12 +12,12 @@ else
 fi
 
 echo "SOLUTION_DIR : $SOLUTION_DIR"
-fim "Verificando SOLUTION_DIR"
+echo "##[section]Finishing: Verificando SOLUTION_DIR"
 
 
 
 # Criando variáveis dos arquivos
-inicio "Criando variáveis"
+echo "##[section]Starting: Criando variáveis"
 
 MANIFEST=$SOLUTION_DIR/Droid/Properties/AndroidManifest.xml
 INFO_PLIST=$SOLUTION_DIR/iOS/Info.plist
@@ -44,13 +32,13 @@ echo "ENTITLEMENTS_PLIST : $ENTITLEMENTS_PLIST"
 echo "APP_CONFIG         : $APP_CONFIG"
 echo "APP_XAML           : $APP_XAML"
 echo "APP_INI            : $APP_INI"
-fim "Criando variáveis"
+echo "##[section]Finishing: Criando variáveis"
 
 
 
 # Verificando se app.ini existe
 
-inicio "Verificando variáveis de ambiente"
+echo "##[section]Starting: Verificando variáveis de ambiente"
 if [ -e "$APP_INI" ]
 then
     CLIENTE=$(cat $APP_INI | grep "CLIENTE = " | awk '{print $3}')
@@ -80,11 +68,11 @@ else
     echo "PRIMARY_COLOR   : $PRIMARY_COLOR"
 fi
 
-fim "Verificando variáveis de ambiente"
+echo "##[section]Finishing: Verificando variáveis de ambiente"
 
 
 # Copiar imagens
-inicio "Copiar arquivos"
+echo "##[section]Starting: Copiar arquivos"
 cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/Droid/Resources/drawable/*.png \
 $SOLUTION_DIR/Droid/Resources/drawable/
 
@@ -99,11 +87,11 @@ $SOLUTION_DIR/iOS/Assets.xcassets/LaunchImage.launchimage/
 
 cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Resources/*.png \
 $SOLUTION_DIR/iOS/Resources/
-fim "Copiar arquivos"
+echo "##[section]Finishing: Copiar arquivos"
 
 
 # Manifesto Android
-inicio "Alterar arquivo manifesto Android"
+echo "##[section]Starting: Alterar arquivo manifesto Android"
 sed -i '' 's/versionName="[0-9.]*"/versionName="'$VERSION_NAME'"/' $MANIFEST
 sed -i '' 's/android:label="[a-zA-Zà-úÀ-Ú0-9 ]*"/android:label="'"$APP_NAME"'"/' $MANIFEST
 sed -i '' 's/package="[a-z.]*"/package="'$PACKAGE'"/' $MANIFEST
@@ -112,11 +100,11 @@ echo "Resultado do arquivo:"
 echo ""
 cat $MANIFEST
 echo ""
-fim "Alterar arquivo manifesto Android"
+echo "##[section]Finishing: Alterar arquivo manifesto Android"
 
 
 # plist iOS
-inicio "Alterar arquivos plist iOS"
+echo "##[section]Starting: Alterar arquivos plist iOS"
 plutil -replace CFBundleIdentifier -string $PACKAGE $INFO_PLIST
 plutil -replace CFBundleName -string "$APP_NAME" $INFO_PLIST
 plutil -replace CFBundleDisplayName -string "$APP_NAME" $INFO_PLIST
@@ -129,26 +117,26 @@ cat $INFO_PLIST
 echo ""
 cat $ENTITLEMENTS_PLIST
 echo ""
-fim "Alterar arquivos plist iOS"
+echo "##[section]Finishing: Alterar arquivos plist iOS"
 
 
 # Constantes
-inicio "Alterar constantes"
+echo "##[section]Starting: Alterar constantes"
 sed -i '' 's#ApiUrl = "[a-z:./]*"#ApiUrl = "'$API_URL'"#' $APP_CONFIG
 
 echo "Resultado do arquivo:"
 echo ""
 cat $APP_CONFIG
 echo ""
-fim "Alterar constantes"
+echo "##[section]Finishing: Alterar constantes"
 
 
 # Resource dictionary
-inicio "Alterar resource dictionary"
+echo "##[section]Starting: Alterar resource dictionary"
 sed -i '' 's/"PrimaryColor">[a-zA-Z0-9#]*</"PrimaryColor">'$PRIMARY_COLOR'</' $APP_XAML
 
 echo "Resultado do arquivo:"
 echo ""
 cat $APP_XAML
 echo ""
-fim "Alterar resource dictionary"
+echo "##[section]Finishing: Alterar resource dictionary"
