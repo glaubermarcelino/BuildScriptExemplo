@@ -1,0 +1,7 @@
+CLIENTE = Cliente1
+API_URL = https://prod.app.com
+VERSION_NAME = 1.1
+APP_NAME = Burger 1
+PACKAGE = br.com.burger1
+APS_ENVIRONMENT = development
+PRIMARY_COLOR = #FF0000
