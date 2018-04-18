@@ -57,7 +57,8 @@ sed -i '' 's/package="[a-z.]*"/package="'$PACKAGE'"/' $MANIFEST
 
 # plist iOS
 plutil -replace CFBundleIdentifier -string $PACKAGE $INFO_PLIST
-plutil -replace CFBundleName -string $APP_NAME $INFO_PLIST
+plutil -replace CFBundleName -string "$APP_NAME" $INFO_PLIST
+plutil -replace CFBundleDisplayName -string "$APP_NAME" $INFO_PLIST
 plutil -replace CFBundleShortVersionString -string $VERSION_NAME $INFO_PLIST
 plutil -replace aps-environment -string $APS_ENVIRONMENT $ENTITLEMENTS_PLIST
 
