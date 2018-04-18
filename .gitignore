@@ -41,3 +41,7 @@ Thumbs.db
 *.dotCover
 
 .mfractor
+
+
+# Build scripts
+Build/app.ini

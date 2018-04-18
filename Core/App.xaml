@@ -9,10 +9,10 @@
         <!-- Application resource dictionary -->
 
         <ResourceDictionary>
-            <Color x:Key="CorPrimaria">Red</Color>
+            <Color x:Key="PrimaryColor">Red</Color>
             
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource CorPrimaria}" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
         </ResourceDictionary>
