@@ -89,7 +89,7 @@ echo "##[section]Finishing: Copiar arquivos"
 echo "##[section]Starting: Alterar arquivo manifesto Android"
 sed -i '' 's/versionName="[0-9.]*"/versionName="'$VERSION_NAME'"/' $MANIFEST
 sed -i '' 's/android:label="[a-zA-Zà-úÀ-Ú0-9 ]*"/android:label="'"$APP_NAME"'"/' $MANIFEST
-sed -i '' 's/package="[a-z.]*"/package="'$PACKAGE'"/' $MANIFEST
+sed -i '' 's/package="[a-zA-Z.]*"/package="'$PACKAGE'"/' $MANIFEST
 
 echo "Resultado do arquivo:"
 echo ""
