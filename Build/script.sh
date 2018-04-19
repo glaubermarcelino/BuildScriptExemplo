@@ -73,20 +73,15 @@ echo "##[section]Finishing: Verificando variáveis de ambiente"
 
 # Copiar imagens
 echo "##[section]Starting: Copiar arquivos"
-cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/Droid/Resources/drawable/*.png \
-$SOLUTION_DIR/Droid/Resources/drawable/
+cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/Droid/Resources/drawable/*.png $SOLUTION_DIR/Droid/Resources/drawable/
 
-cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/Droid/Resources/drawable-hdpi/*.png \
-$SOLUTION_DIR/Droid/Resources/drawable-hdpi/
+cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/Droid/Resources/drawable-hdpi/*.png $SOLUTION_DIR/Droid/Resources/drawable-hdpi/
 
-cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Assets.xcassets/AppIcon.appiconset/*.png \
-$SOLUTION_DIR/iOS/Assets.xcassets/AppIcon.appiconset/
+cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Assets.xcassets/AppIcon.appiconset/*.png $SOLUTION_DIR/iOS/Assets.xcassets/AppIcon.appiconset/
 
-cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Assets.xcassets/LaunchImage.launchimage/*.png  \
-$SOLUTION_DIR/iOS/Assets.xcassets/LaunchImage.launchimage/
+cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Assets.xcassets/LaunchImage.launchimage/*.png $SOLUTION_DIR/iOS/Assets.xcassets/LaunchImage.launchimage/
 
-cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Resources/*.png \
-$SOLUTION_DIR/iOS/Resources/
+cp $SOLUTION_DIR/Build/Clientes/$CLIENTE/iOS/Resources/*.png $SOLUTION_DIR/iOS/Resources/
 echo "##[section]Finishing: Copiar arquivos"
 
 
